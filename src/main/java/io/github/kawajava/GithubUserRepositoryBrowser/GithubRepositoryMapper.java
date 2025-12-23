@@ -8,10 +8,7 @@ public class GithubRepositoryMapper {
 
     public RepositoryResponse toResponse(GithubRepository repository, List<GithubBranch> branches
     ) {
-        return new RepositoryResponse(
-                repository.name(),
-                repository.owner().login(),
-                mapBranches(branches)
+        return new RepositoryResponse(repository.name(), repository.owner().login(), mapBranches(branches)
         );
     }
 
