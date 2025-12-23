@@ -1,5 +1,6 @@
 package io.github.kawajava.GithubUserRepositoryBrowser;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
@@ -12,10 +13,13 @@ class RestClientConfig {
         return RestClient.builder();
     }
 
+    @Value("${github.api.base.url}")
+    private String githubApiBaseUrl;
+
     @Bean
     RestClient githubRestClient(RestClient.Builder builder) {
         return builder
-                .baseUrl("https://api.github.com")
+                .baseUrl(githubApiBaseUrl)
                 .build();
     }
 }

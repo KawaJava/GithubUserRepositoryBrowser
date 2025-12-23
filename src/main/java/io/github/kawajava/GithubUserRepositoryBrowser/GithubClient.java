@@ -21,7 +21,7 @@ public class GithubClient {
                         .uri("/users/{username}/repos", username)
                         .retrieve()
                         .onStatus(HttpStatusCode::is4xxClientError,
-                                (req, res) -> { throw new GithubUserNotFoundException(username); })
+                                (req, res) -> { throw new NotExistingUserException(username); })
                         .body(new ParameterizedTypeReference<List<GithubRepository>>() {})
         ).orElseThrow(() -> new IllegalStateException("GitHub API returned null repositories"));
     }

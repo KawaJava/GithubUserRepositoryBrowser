@@ -6,9 +6,7 @@ import java.util.List;
 @Component
 public class GithubRepositoryMapper {
 
-    public RepositoryResponse toResponse(
-            GithubRepository repository,
-            List<GithubBranch> branches
+    public RepositoryResponse toResponse(GithubRepository repository, List<GithubBranch> branches
     ) {
         return new RepositoryResponse(
                 repository.name(),
